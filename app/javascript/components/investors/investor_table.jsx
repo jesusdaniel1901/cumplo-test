@@ -1,4 +1,5 @@
 import React from 'react'
+import jQuery from 'Jquery'
 
 export default class extends React.Component {
 
@@ -18,7 +19,7 @@ export default class extends React.Component {
   _fetchInvestors() {
     jQuery.ajax({
       method: 'GET',
-      url: 'api/v1/investors',
+      url: '/api/v1/investors',
       success: (investors) => {
         this.setState({ investors })
       }
@@ -29,30 +30,16 @@ export default class extends React.Component {
     return this.state.investors.map((investor) => {
       return (
           <tr>
+            <td>{investor.name}</td>
             <td>{investor.email}</td>
-            <td>{investor.email}</td>
-            <td>{investor.email}</td>
+            <td>{investor.nationality}</td>
           </tr>)
     });
   }
 
-  _getNames() {
-    return this.state.investors.map((investor) => {
-      return <th>{investor.name}</th>
-    });
-  }
-
-  _getNationalities() {
-    return this.state.investors.map((investor) => {
-      return <th>{investor.nationality}</th>
-    });
-  }
-
   render() {
-
-    // const names = this._getNames();
-    // const nationalities = this._getNationalities();
-    // const emails = this._getEmails();
+    const tableBody = this._getTableBody();
+    console.log(tableBody);
 
     return (
         <div>
@@ -65,11 +52,7 @@ export default class extends React.Component {
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>John</td>
-              <td>Doe</td>
-              <td>john@example.com</td>
-            </tr>
+            {tableBody}
             </tbody>
           </table>
         </div>
