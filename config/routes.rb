@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   root 'investors#index'
 
-  resources :investors,only: [:new,:edit]
+  resources :investors,only: [:new,:edit] do
+    get :transfer,on: :collection
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

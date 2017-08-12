@@ -1,4 +1,4 @@
-class Api::V1::ApiController < ApplicationController
+class Api::V1::ApiController < ActionController::API
   include Api::V1::Apiable
   include ActionController::Serialization
 

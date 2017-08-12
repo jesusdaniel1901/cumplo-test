@@ -25,6 +25,10 @@ class Api::V1::InvestorsController < Api::V1::ApiController
     end
   end
 
+  def transfer_stock
+
+  end
+
 
   private
 
