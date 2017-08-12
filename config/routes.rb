@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'homes/index'
+  # get 'homes/index'
+
+  root 'investors#index'
+
+  resources :investors,only: [:new,:edit]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
