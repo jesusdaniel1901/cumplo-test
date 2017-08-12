@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :investors
+      resources :investors do
+        collection do
+          post 'transfer-stock',action: :transfer_stock
+        end
+      end
     end
   end
 

@@ -15,6 +15,7 @@ export default class extends React.Component {
     };
     this._handleAmountChange = this._handleAmountChange.bind(this);
     this._handleBuyerChange = this._handleBuyerChange.bind(this);
+    this._handleSubmit = this._handleSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -27,6 +28,26 @@ export default class extends React.Component {
       url: '/api/v1/investors',
       success: (investors) => {
         this.setState({ investors })
+      }
+    });
+  }
+
+  _handleSubmit(){
+    jQuery.ajax({
+      method: 'POST',
+      headers: {
+        "Content-Type": " application/json",
+        "Accept": "application/json",
+      },
+      type: 'json',
+      url: `/api/v1/investors/transfer-stock`,
+      data: JSON.stringify({ "seller_id": this._seller.value,"buyer_id": this._buyer.value, "stock": parseFloat(this._stock.value) }),
+      success: (investor) => {
+        console.log(investor)
+        window.location = '/'
+      },
+      error: (data) =>{
+        console.log(data);
       }
     });
   }
@@ -93,8 +114,8 @@ export default class extends React.Component {
               <span style={{display: this.state.displayBuyerError, color: 'red'}}>{this.state.selectBuyerErrorContent}</span>
             </div>
             <div className="form-group">
-              <label for="nationality">Monto</label>
-              <input type="text" value={this.state.amount} ref={input => this._nationality = input} className="form-control" key="nationality"
+              <label for="amount">Monto</label>
+              <input ref={input => this._stock = input} type="text" value={this.state.amount} className="form-control" key="nationality"
                      placeholder="Introduza el monto a vender" onChange={this._handleAmountChange}/>
               <span style={{display: this.state.displayError, color: 'red'}}>{this.state.errorContent}</span>
             </div>

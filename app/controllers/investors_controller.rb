@@ -16,10 +16,6 @@ class InvestorsController < ApplicationController
   end
 
   def transfer
-    # @seller = Investor.find_by(id: params[:seller_id])
-    # @buyer = Investor.find_by(id: params[:buyer_id])
-    #
-    # @seller.sale_action(@buyer,params[:amount])
 
   end
 

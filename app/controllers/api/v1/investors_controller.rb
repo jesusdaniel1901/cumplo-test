@@ -26,7 +26,16 @@ class Api::V1::InvestorsController < Api::V1::ApiController
   end
 
   def transfer_stock
+    @seller = Investor.find_by(id: params[:seller_id])
+    @buyer = Investor.find_by(id: params[:buyer_id])
 
+    return render_error(:not_found,'Vendedor o comprador no encontrado') unless @seller.present? || @buyer.present?
+
+    if @seller.sale_action(@buyer,params[:stock])
+      render_json @seller
+    else
+      render_error(:unprocessable_entity,'Fallo la transaccion')
+    end
   end
 
 

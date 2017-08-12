@@ -93,7 +93,7 @@ export default class extends React.Component {
     const tableBody = this._getTableBody();
     return (
         <div>
-          <a href="investors/transfer" style={{marginTop: '2%', marginRight: '2%'}} className="btn btn-primary pull-left">Transfer stock</a>
+          <a href="investors/transfer" style={{marginTop: '2%', marginLeft: '2%'}} className="btn btn-primary pull-left">Transfer stock</a>
           <a href="investors/new" style={{marginTop: '2%', marginRight: '2%'}} className="btn btn-primary pull-right">Create a new investor</a>
           <table className="table">
             <thead>
