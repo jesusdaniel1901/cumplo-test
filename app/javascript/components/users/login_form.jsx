@@ -3,7 +3,15 @@ import jQuery from 'Jquery'
 
 export default class extends React.Component {
 
-  _handleSubmit(){
+  constructor(props){
+    super(props)
+    this._handleSubmit = this._handleSubmit.bind(this);
+  }
+
+  _handleSubmit(event){
+    event.preventDefault();
+    console.log('entre aqui');
+    // window.location = '/';
     jQuery.ajax({
       method: 'POST',
       headers: {
@@ -11,10 +19,15 @@ export default class extends React.Component {
         "Accept": "application/json",
       },
       type: 'json',
-      url: `/api/v1/investors/`,
-      data: JSON.stringify({"email": this._name.value,"password": this._password.value}),
-      success: (investor) => {
-        window.location = '/'
+      url: `/api/v1/admin_auth/sign_in`,
+      data: JSON.stringify({"email": this._email.value,"password": this._password.value}),
+      success: (data, textStatus, request) => {
+        localStorage.setItem('access-token', request.getResponseHeader('access-token'));
+        localStorage.setItem('client', request.getResponseHeader('client'));
+        localStorage.setItem('expiry', request.getResponseHeader('expiry'));
+        localStorage.setItem('token-type', request.getResponseHeader('token-type'));
+        localStorage.setItem('uid', request.getResponseHeader('uid'));
+        localStorage.setItem('client', request.getResponseHeader('client'));
       }
     });
   }
@@ -22,19 +35,20 @@ export default class extends React.Component {
   render(){
     const divStyle = {
       width: '40%',
-      marginLeft: '30%'
+      marginLeft: '30%',
+      marginTop: '10%'
     };
     return(
         <div style={divStyle}>
           <form onSubmit={this._handleSubmit}>
             <div className="form-group">
               <label for="investorEmail">Email address</label>
-              <input type="email"  className="form-control" ref={input => this._email = input} key="investorEmail" onChange={this._emailOnchange}
+              <input type="email"  className="form-control" ref={input => this._email = input} key="investorEmail"
                      placeholder="Enter email"/>
             </div>
             <div className="form-group">
               <label for="investorName">Password</label>
-              <input type="text"  ref={input => this._password = input} className="form-control" key="investorName"
+              <input type="password"  ref={input => this._password = input} className="form-control"
                      placeholder="Enter password"/>
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
