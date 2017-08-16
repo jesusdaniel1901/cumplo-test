@@ -1,8 +1,11 @@
 class Api::V1::InvestorsController < Api::V1::ApiController
 
+  before_action :verify_admin
+
   before_action :set_investor,only: [:update]
 
   def index
+    puts current_admin.email
     @investors = Investor.all
     render_json @investors
   end
@@ -32,8 +35,10 @@ class Api::V1::InvestorsController < Api::V1::ApiController
     return render_error(:not_found,'Vendedor o comprador no encontrado') unless @seller.present? || @buyer.present?
 
     if @seller.sale_action(@buyer,params[:stock])
+      puts "FUNCIONO AQUI"
       render_json @seller
     else
+      puts "FALLO AQUI"
       render_error(:unprocessable_entity,'Fallo la transaccion')
     end
   end
@@ -44,6 +49,10 @@ class Api::V1::InvestorsController < Api::V1::ApiController
   def set_investor
     @investor = Investor.find_by(id: params[:id])
     render_error(:not_found,'Investor not found') unless @investor.present?
+  end
+
+  def verify_admin
+    render_error(:bad_request,'Bad request just for admins users') unless  admin_signed_in?
   end
 
 end

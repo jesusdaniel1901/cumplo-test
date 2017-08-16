@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   # get 'homes/index'
 
   root 'investors#index'
-  get 'users/login' => 'users#login'
+  get 'admin/login' => 'admin#login'
 
   resources :investors,only: [:new,:edit] do
     get :transfer,on: :collection

@@ -22,32 +22,67 @@ export default class extends React.Component {
     this._fetchInvestors();
   }
 
+  saveTokens(request){
+    if(request.getResponseHeader('access-token') != null) {
+      localStorage.setItem('access-token', request.getResponseHeader('access-token'));
+      localStorage.setItem('client', request.getResponseHeader('client'));
+      localStorage.setItem('expiry', request.getResponseHeader('expiry'));
+      localStorage.setItem('token-type', request.getResponseHeader('token-type'));
+      localStorage.setItem('uid', request.getResponseHeader('uid'));
+    }
+  }
+
   _fetchInvestors() {
     jQuery.ajax({
       method: 'GET',
       url: '/api/v1/investors',
-      success: (investors) => {
-        this.setState({ investors })
+      headers: {
+        "Content-Type": " application/json",
+        "Accept": "application/json",
+        "access-token": localStorage.getItem("access-token"),
+        "client": localStorage.getItem("client"),
+        "expiry": localStorage.getItem("expiry"),
+        "token-type": localStorage.getItem("token-type"),
+        "uid": localStorage.getItem("uid")
+      },
+      success: (data,textStatus, request) => {
+        this.saveTokens(request);
+        this.setState({ investors: data })
+      },
+      error: (data) => {
+        if(data.responseJSON.errors[0] == 'Bad request just for admins users') {
+          window.location = '/admin/login';
+          alert('Bad request just for admins users');
+        }
       }
     });
   }
 
-  _handleSubmit(){
+  _handleSubmit(event){
+    event.preventDefault();
     jQuery.ajax({
       method: 'POST',
       headers: {
         "Content-Type": " application/json",
         "Accept": "application/json",
+        "access-token": localStorage.getItem("access-token"),
+        "client": localStorage.getItem("client"),
+        "expiry": localStorage.getItem("expiry"),
+        "token-type": localStorage.getItem("token-type"),
+        "uid": localStorage.getItem("uid")
       },
       type: 'json',
       url: `/api/v1/investors/transfer-stock`,
       data: JSON.stringify({ "seller_id": this._seller.value,"buyer_id": this._buyer.value, "stock": parseFloat(this._stock.value) }),
-      success: (investor) => {
-        console.log(investor)
+      success: (data, textStatus, request) => {
+        this.saveTokens(request);
         window.location = '/'
       },
       error: (data) =>{
-        console.log(data);
+        if(data.responseJSON.errors[0] == 'Bad request just for admins users') {
+          window.location = 'admin/login';
+          alert('Bad request just for admins users');
+        }
       }
     });
   }

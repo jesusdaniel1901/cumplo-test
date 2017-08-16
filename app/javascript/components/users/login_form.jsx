@@ -10,7 +10,6 @@ export default class extends React.Component {
 
   _handleSubmit(event){
     event.preventDefault();
-    console.log('entre aqui');
     // window.location = '/';
     jQuery.ajax({
       method: 'POST',
@@ -27,7 +26,10 @@ export default class extends React.Component {
         localStorage.setItem('expiry', request.getResponseHeader('expiry'));
         localStorage.setItem('token-type', request.getResponseHeader('token-type'));
         localStorage.setItem('uid', request.getResponseHeader('uid'));
-        localStorage.setItem('client', request.getResponseHeader('client'));
+        window.location = '/'
+      },
+      error: (data) => {
+        console.log(data)
       }
     });
   }

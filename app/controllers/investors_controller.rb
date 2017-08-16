@@ -3,7 +3,7 @@ class InvestorsController < ApplicationController
   before_action :set_investor,only: [:edit]
 
   def index
-
+    # redirect_to admin_login_path unless admin_signed_in?
   end
 
   def new

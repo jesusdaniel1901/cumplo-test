@@ -23,9 +23,26 @@ export default class extends React.Component {
   _fetchInvestors() {
     jQuery.ajax({
       method: 'GET',
+      headers: {
+        "Content-Type": " application/json",
+        "Accept": "application/json",
+        "access-token": localStorage.getItem("access-token"),
+        "client": localStorage.getItem("client"),
+        "expiry": localStorage.getItem("expiry"),
+        "token-type": localStorage.getItem("token-type"),
+        "uid": localStorage.getItem("uid")
+      },
+      type: 'json',
       url: '/api/v1/investors',
-      success: (investors) => {
-        this.setState({ investors })
+      success: (data, textStatus, request) => {
+        this.saveTokens(request);
+        this.setState({ investors: data })
+      },
+      error: (data) => {
+        if(data.responseJSON.errors[0] == 'Bad request just for admins users') {
+          window.location = 'admin/login';
+          alert('Bad request just for admins users');
+        }
       }
     });
   }
@@ -45,22 +62,34 @@ export default class extends React.Component {
       headers: {
         "Content-Type": " application/json",
         "Accept": "application/json",
+        "access-token": localStorage.getItem("access-token"),
+        "client": localStorage.getItem("client"),
+        "expiry": localStorage.getItem("expiry"),
+        "token-type": localStorage.getItem("token-type"),
+        "uid": localStorage.getItem("uid")
       },
       type: 'json',
       url: `/api/v1/investors/`,
       data: JSON.stringify({"name": name,"email": email, "nationality": nationality}),
-      success: (investor) => {
+      success: (data,textStatus, request) => {
         const newInvestor = {
-          id: investor.id,
-          name: investor.name,
-          email: investor.email,
-          nationality: investor.nationality
+          id: data.id,
+          name: data.name,
+          email: data.email,
+          nationality: data.nationality
         };
         this.setState({
           investors: this.state.investors.concat([newInvestor])
         });
         window.location = '/'
+        this.saveTokens(request)
+      },
+      error: (data) => {
+      if(data.responseJSON.errors[0] == 'Bad request just for admins users') {
+        window.location = 'admin/login';
+        alert('Bad request just for admins users');
       }
+    }
     });
 
     const investor = {
@@ -86,6 +115,17 @@ export default class extends React.Component {
   _editInvestor(investor){
     // this.setState({ investorToEdit: investor });
     window.location = `/investors/${investor.id}/edit`
+  }
+
+  saveTokens(request){
+    if(request.getResponseHeader('access-token') != null) {
+      console.log('entre aqui');
+      localStorage.setItem('access-token', request.getResponseHeader('access-token'));
+      localStorage.setItem('client', request.getResponseHeader('client'));
+      localStorage.setItem('expiry', request.getResponseHeader('expiry'));
+      localStorage.setItem('token-type', request.getResponseHeader('token-type'));
+      localStorage.setItem('uid', request.getResponseHeader('uid'));
+    }
   }
 
 

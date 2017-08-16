@@ -24,17 +24,33 @@ export default class extends React.Component {
     this._nationality.value = '';
   }
 
+  saveTokens(request){
+    if(request.getResponseHeader('access-token') != null) {
+      localStorage.setItem('access-token', request.getResponseHeader('access-token'));
+      localStorage.setItem('client', request.getResponseHeader('client'));
+      localStorage.setItem('expiry', request.getResponseHeader('expiry'));
+      localStorage.setItem('token-type', request.getResponseHeader('token-type'));
+      localStorage.setItem('uid', request.getResponseHeader('uid'));
+    }
+  }
+
   _editInvestor(investor){
     jQuery.ajax({
       method: 'PUT',
       headers: {
         "Content-Type": " application/json",
         "Accept": "application/json",
+        "access-token": localStorage.getItem("access-token"),
+        "client": localStorage.getItem("client"),
+        "expiry": localStorage.getItem("expiry"),
+        "token-type": localStorage.getItem("token-type"),
+        "uid": localStorage.getItem("uid")
       },
       type: 'json',
       url: `/api/v1/investors/${investor.id}`,
       data: JSON.stringify({"name": this._name.value,"email": this._email.value, "nationality": this._nationality.value}),
-      success: (investor) => {
+      success: (data, textStatus, request) => {
+        this.saveTokens(request);
         window.location = '/'
       }
     });
@@ -46,11 +62,17 @@ export default class extends React.Component {
       headers: {
         "Content-Type": " application/json",
         "Accept": "application/json",
+        "access-token": localStorage.getItem("access-token"),
+        "client": localStorage.getItem("client"),
+        "expiry": localStorage.getItem("expiry"),
+        "token-type": localStorage.getItem("token-type"),
+        "uid": localStorage.getItem("uid")
       },
       type: 'json',
       url: `/api/v1/investors/`,
       data: JSON.stringify({"name": this._name.value,"email": this._email.value, "nationality": this._nationality.value}),
-      success: (investor) => {
+      success: (data, textStatus, request) => {
+        this.saveTokens(request);
         window.location = '/'
       }
     });
