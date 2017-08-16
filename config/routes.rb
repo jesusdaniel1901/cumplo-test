@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  
+
   mount_devise_token_auth_for 'Admin', at: 'auth'
 
   namespace :api do
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
           post 'transfer-stock',action: :transfer_stock
         end
       end
+      resources :legal_representatives,only: [:index]
       mount_devise_token_auth_for 'Admin', at: :admin_auth, controllers: {
         confirmations: 'api/v1/admin_auth/confirmations',
         passwords: 'api/v1/admin_auth/passwords',

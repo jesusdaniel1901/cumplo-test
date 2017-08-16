@@ -142,6 +142,7 @@ export default class extends React.Component {
   }
 
   saveTokens(request){
+    console.log(request.getResponseHeader('access-token'));
     if(request.getResponseHeader('access-token') != null) {
       console.log('entre aqui');
       localStorage.setItem('access-token', request.getResponseHeader('access-token'));

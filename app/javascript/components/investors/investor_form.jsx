@@ -5,7 +5,36 @@ export default class extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      legalRepresentatives: []
+    };
     this._handleSubmit = this._handleSubmit.bind(this);
+    this._getLegalRepresentativesOptions = this._getLegalRepresentativesOptions.bind(this);
+  }
+
+  componentWillMount() {
+    this._fetchLegalRepresentatives();
+  }
+
+  _fetchLegalRepresentatives(){
+    jQuery.ajax({
+      method: 'GET',
+      headers: {
+        "Content-Type": " application/json",
+        "Accept": "application/json",
+        "access-token": localStorage.getItem("access-token"),
+        "client": localStorage.getItem("client"),
+        "expiry": localStorage.getItem("expiry"),
+        "token-type": localStorage.getItem("token-type"),
+        "uid": localStorage.getItem("uid")
+      },
+      type: 'json',
+      url: '/api/v1/legal_representatives',
+      success: (data, textStatus, request) => {
+        this.saveTokens(request);
+        this.setState({ legalRepresentatives: data })
+      }
+    });
   }
 
   _handleSubmit(event) {
@@ -24,6 +53,7 @@ export default class extends React.Component {
   }
 
   saveTokens(request){
+    console.log(request.getResponseHeader('access-token'))
     if(request.getResponseHeader('access-token') != null) {
       localStorage.setItem('access-token', request.getResponseHeader('access-token'));
       localStorage.setItem('client', request.getResponseHeader('client'));
@@ -54,7 +84,8 @@ export default class extends React.Component {
         "phone": this._phone.value,
         "address": this._address.value,
         "rut": this._rut.value,
-        "stock": this._stock.value
+        "stock": this._stock.value,
+        "legal_representative_id": this._legal_representative.value
       }),
       success: (data, textStatus, request) => {
         this.saveTokens(request);
@@ -84,7 +115,8 @@ export default class extends React.Component {
         "phone": this._phone.value,
         "address": this._address.value,
         "rut": this._rut.value,
-        "stock": this._stock.value
+        "stock": this._stock.value,
+        "legal_representative_id": this._legal_representative.value
       }),
       success: (data, textStatus, request) => {
         this.saveTokens(request);

@@ -27,7 +27,8 @@ class Investor < ApplicationRecord
       :phone,
       :address,
       :rut,
-      :stock
+      :stock,
+      :legal_representative_id
     ]
   end
 

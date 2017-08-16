@@ -56,4 +56,8 @@ class Api::V1::InvestorsController < Api::V1::ApiController
     render_error(:not_found,'Investor not found') unless @investor.present?
   end
 
+  def verify_admin
+    render_error(:bad_request,'Bad request just for admins users') unless  admin_signed_in?
+  end
+
 end
