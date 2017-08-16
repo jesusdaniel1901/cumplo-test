@@ -93,7 +93,18 @@ export default class extends React.Component {
     });
   }
 
+  _getLegalRepresentativesOptions() {
+    return this.state.legalRepresentatives.map((legalRepresentative) => {
+      return (
+          <option value={legalRepresentative.id}>{legalRepresentative.full_name}</option>
+      )
+    });
+  }
+
   render(){
+
+    const legalRepresentatives = this._getLegalRepresentativesOptions()
+
     const divStyle = {
       width: '40%',
       marginLeft: '30%'
