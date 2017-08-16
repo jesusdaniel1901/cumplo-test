@@ -22,6 +22,7 @@ export default class extends React.Component {
     return(
         <tr>
           <td>{this.props.investor.name}</td>
+          <td>{this.props.investor.legal_representative.full_name}</td>
           <td>{this.props.investor.email}</td>
           <td>{this.props.investor.nationality}</td>
           <td>{this.props.investor.rut}</td>

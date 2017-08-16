@@ -163,6 +163,7 @@ export default class extends React.Component {
             <thead>
             <tr>
               <th>Nombre</th>
+              <th>Representante Legal</th>
               <th>Email</th>
               <th>Nacionalidad</th>
               <th>Rut</th>

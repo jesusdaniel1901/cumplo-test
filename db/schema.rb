@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170816013305) do
+ActiveRecord::Schema.define(version: 20170816111313) do
 
-  create_table "admins", force: :cascade do |t|
+  create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -41,24 +41,34 @@ ActiveRecord::Schema.define(version: 20170816013305) do
     t.index ["uid", "provider"], name: "index_admins_on_uid_and_provider", unique: true
   end
 
-  create_table "investors", force: :cascade do |t|
+  create_table "investors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "email"
     t.string "nationality"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "stock"
+    t.decimal "stock", precision: 10
     t.string "rut"
     t.string "address"
     t.string "phone"
+    t.bigint "legal_representative_id"
+    t.index ["legal_representative_id"], name: "index_investors_on_legal_representative_id"
   end
 
-  create_table "transfers", force: :cascade do |t|
-    t.decimal "stock"
+  create_table "legal_representatives", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "first_name"
+    t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "investor_seller_id", limit: 8
-    t.integer "investor_buyer_id", limit: 8
   end
 
+  create_table "transfers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.decimal "stock", precision: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "investor_seller_id"
+    t.bigint "investor_buyer_id"
+  end
+
+  add_foreign_key "investors", "legal_representatives"
 end

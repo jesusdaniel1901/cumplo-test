@@ -15,7 +15,7 @@ export default class extends React.Component {
       method: 'POST',
       headers: {
         "Content-Type": " application/json",
-        "Accept": "application/json",
+        "Accept": "application/json"
       },
       type: 'json',
       url: `/api/v1/admin_auth/sign_in`,
@@ -44,6 +44,7 @@ export default class extends React.Component {
     return(
         <div style={divStyle}>
           <form onSubmit={this._handleSubmit}>
+            <input type='hidden' name='authenticity_token' value={this.props.authenticity_token} />
             <div className="form-group">
               <label for="investorEmail">Email address</label>
               <input type="email"  className="form-control" ref={input => this._email = input} key="investorEmail"

@@ -1,5 +1,7 @@
 class Investor < ApplicationRecord
 
+  belongs_to :legal_representative
+
   def sale_action(buyer,amount)
     begin
       buyer.stock += amount

@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-5.times{FactoryGirl.create(:investor)}
+5.times{
+  legal_representative = FactoryGirl.create(:legal_representative)
+  legal_representative.investors << FactoryGirl.create(:investor,legal_representative: legal_representative)
+}
 
 admin = Admin.create!(email: 'admin@cumplo.cl',password: 'foobar123')
