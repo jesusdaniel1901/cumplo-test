@@ -2,10 +2,9 @@ class Api::V1::InvestorsController < Api::V1::ApiController
 
   before_action :verify_admin
 
-  before_action :set_investor,only: [:update]
+  before_action :set_investor,only: [:update, :destroy]
 
   def index
-    puts current_admin.email
     @investors = Investor.all
     render_json @investors
   end
@@ -38,6 +37,14 @@ class Api::V1::InvestorsController < Api::V1::ApiController
       render_json @seller
     else
       render_error(:unprocessable_entity,'Fallo la transaccion')
+    end
+  end
+
+  def destroy
+    if @investor.destroy
+      render json: {}
+    else
+      render_error(:unprocessable_entity,@investor.errors.full_messages)
     end
   end
 

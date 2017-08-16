@@ -105,11 +105,35 @@ export default class extends React.Component {
   }
 
   _deleteInvestor(investor){
-    const investors = [...this.state.investors];
-    const investorIndex = investors.indexOf(investor);
-    investors.splice(investorIndex,1);
+    jQuery.ajax({
+      method: 'DELETE',
+      headers: {
+        "Content-Type": " application/json",
+        "Accept": "application/json",
+        "access-token": localStorage.getItem("access-token"),
+        "client": localStorage.getItem("client"),
+        "expiry": localStorage.getItem("expiry"),
+        "token-type": localStorage.getItem("token-type"),
+        "uid": localStorage.getItem("uid")
+      },
+      type: 'json',
+      url: `/api/v1/investors/${investor.id}`,
+      success: (data,textStatus, request) => {
+        const investors = [...this.state.investors];
+        const investorIndex = investors.indexOf(investor);
+        investors.splice(investorIndex,1);
+        this.setState({ investors });
+        this.saveTokens(request);
+        window.location = '/';
+      },
+      error: (data) => {
+        if(data.responseJSON.errors[0] == 'Bad request just for admins users') {
+          window.location = 'admin/login';
+          alert('Bad request just for admins users');
+        }
+      }
+    });
 
-    this.setState({ investors });
   }
 
   _editInvestor(investor){
