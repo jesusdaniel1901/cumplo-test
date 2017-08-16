@@ -21,6 +21,7 @@ export default class extends React.Component {
       url: `/api/v1/admin_auth/sign_in`,
       data: JSON.stringify({"email": this._email.value,"password": this._password.value}),
       success: (data, textStatus, request) => {
+        console.log(request.getResponseHeader('access-token'));
         localStorage.setItem('access-token', request.getResponseHeader('access-token'));
         localStorage.setItem('client', request.getResponseHeader('client'));
         localStorage.setItem('expiry', request.getResponseHeader('expiry'));

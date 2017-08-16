@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 5.times{FactoryGirl.create(:investor)}
+
+admin = Admin.create!(email: 'admin@cumplo.cl',password: 'foobar123')

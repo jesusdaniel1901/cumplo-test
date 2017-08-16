@@ -138,10 +138,15 @@ export default class extends React.Component {
           <table className="table">
             <thead>
             <tr>
-              <th>Name</th>
+              <th>Nombre</th>
               <th>Email</th>
-              <th>Nationality</th>
-              <th>Actions</th>
+              <th>Nacionalidad</th>
+              <th>Rut</th>
+              <th>Direccion</th>
+              <th>Telefono</th>
+              <th>Stock</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
             </tr>
             </thead>
             <tbody>

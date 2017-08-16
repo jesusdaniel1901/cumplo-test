@@ -24,8 +24,14 @@ export default class extends React.Component {
           <td>{this.props.investor.name}</td>
           <td>{this.props.investor.email}</td>
           <td>{this.props.investor.nationality}</td>
+          <td>{this.props.investor.rut}</td>
+          <td>{this.props.investor.address}</td>
+          <td>{this.props.investor.phone}</td>
+          <td>{this.props.investor.stock}</td>
           <td>
             <button style={{marginRight: '3%'}} onClick={this._handleEdit.bind(this)} className="btn btn-primary">Edit</button>
+          </td>
+          <td>
             <button onClick={this._handleDelete.bind(this)} className="btn btn-danger">Delete</button>
           </td>
         </tr>

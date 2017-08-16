@@ -35,10 +35,8 @@ class Api::V1::InvestorsController < Api::V1::ApiController
     return render_error(:not_found,'Vendedor o comprador no encontrado') unless @seller.present? || @buyer.present?
 
     if @seller.sale_action(@buyer,params[:stock])
-      puts "FUNCIONO AQUI"
       render_json @seller
     else
-      puts "FALLO AQUI"
       render_error(:unprocessable_entity,'Fallo la transaccion')
     end
   end
