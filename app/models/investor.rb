@@ -19,7 +19,11 @@ class Investor < ApplicationRecord
     [
       :name,
       :email,
-      :nationality
+      :nationality,
+      :phone,
+      :address,
+      :rut,
+      :stock
     ]
   end
 
