@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170816005442) do
+ActiveRecord::Schema.define(version: 20170816013305) do
 
   create_table "admins", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -51,6 +51,14 @@ ActiveRecord::Schema.define(version: 20170816005442) do
     t.string "rut"
     t.string "address"
     t.string "phone"
+  end
+
+  create_table "transfers", force: :cascade do |t|
+    t.decimal "stock"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "investor_seller_id", limit: 8
+    t.integer "investor_buyer_id", limit: 8
   end
 
 end

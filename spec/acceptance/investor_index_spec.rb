@@ -1,6 +1,8 @@
 require 'acceptance_helper'
 
 resource 'Investors' do
+  json
+  authenticated
 
   get '/api/v1/investors' do
 

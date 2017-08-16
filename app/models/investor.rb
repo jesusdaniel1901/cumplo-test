@@ -2,9 +2,11 @@ class Investor < ApplicationRecord
 
   def sale_action(buyer,amount)
     begin
-      puts "ENTRE AQUI #{buyer} #{amount}"
       buyer.stock += amount
       self.stock -= amount
+
+      transfer = Transfer.new(investor_seller: self,investor_buyer: buyer,stock: amount)
+      transfer.save
 
       buyer.save
       self.save

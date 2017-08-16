@@ -172,6 +172,7 @@
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.10.3, RVM: ruby-2.4.1 [cumplo]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.12.1, RVM: ruby-2.4.1 [cumplo]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mustache (v1.0.5, RVM: ruby-2.4.1 [cumplo]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mysql2 (v0.4.9, RVM: ruby-2.4.1 [cumplo]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.1.0, RVM: ruby-2.4.1 [cumplo]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.8.0, RVM: ruby-2.4.1 [cumplo]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="omniauth (v1.6.1, RVM: ruby-2.4.1 [cumplo]) [gem]" level="application" />
