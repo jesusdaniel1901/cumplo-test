@@ -11,10 +11,13 @@ export default class extends React.Component {
       displayError: 'none',
       displayBuyerError: 'none',
       errorContent: '',
-      selectBuyerErrorContent: ''
+      selectBuyerErrorContent: '',
+      selectSellerErrorContent: '',
+      displaySellerError: 'none',
     };
     this._handleAmountChange = this._handleAmountChange.bind(this);
     this._handleBuyerChange = this._handleBuyerChange.bind(this);
+    this._handleSellerChange = this._handleSellerChange.bind(this);
     this._handleSubmit = this._handleSubmit.bind(this);
   }
 
@@ -124,6 +127,15 @@ export default class extends React.Component {
     }
   }
 
+  _handleSellerChange(event){
+    if(this._buyer.value.toString() === event.target.value.toString()){
+      this.setState({selectSellerErrorContent: 'No se puede transferir al mismo inversionista',displaySellerError: 'block'});
+    }
+    else {
+      this.setState({selectSellerErrorContent: '',displaySellerError: 'none'});
+    }
+  }
+
   render(){
     const divStyle = {
       width: '40%',
@@ -135,10 +147,11 @@ export default class extends React.Component {
           <form onSubmit={this._handleSubmit}>
             <div className="form-group">
               <label for="sel1">Seleccione el vendedor</label>
-              <select className="form-control"  ref={input => this._seller = input}>
+              <select className="form-control"  ref={input => this._seller = input} onChange={this._handleSellerChange}>
                 <option selected disabled>Seleccione un inversionista</option>
                 {investorsOption}
               </select>
+              <span style={{display: this.state.displaySellerError, color: 'red'}}>{this.state.selectSellerErrorContent}</span>
             </div>
             <div className="form-group">
               <label for="sel1">Seleccione el comprador</label>

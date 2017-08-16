@@ -2,20 +2,23 @@ class Investor < ApplicationRecord
 
   belongs_to :legal_representative
 
-  def sale_action(buyer,amount)
-    begin
-      buyer.stock += amount
-      self.stock -= amount
+  def sale_action(buyer,stock)
+    Transfer.transaction do
 
-      transfer = Transfer.new(investor_seller: self,investor_buyer: buyer,stock: amount)
+      buyer.stock += stock
+      self.stock -= stock
+
+      transfer = Transfer.new(investor_seller: self,investor_buyer: buyer,stock: stock)
       transfer.save
 
       buyer.save
       self.save
+
       return true
-    rescue
-      return false
     end
+
+
+
   end
 
 

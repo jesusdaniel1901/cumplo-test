@@ -178,13 +178,13 @@ export default class extends React.Component {
             </div>
             <div className="form-group">
               <label for="nationality">Rut</label>
-              <input type="text" defaultValue={this.props.investor != null ? this.props.investor.rut : ''} ref={input => this._rut = input} className="form-control"
-                     placeholder="Introduzca telefono"/>
+              <input type="text" defaultValue={this.props.investor != null ? this.props.investor.rut : ''} ref={input => this._rut = input} className="form-control" readOnly={this.props.investor != null ? 'readonly' : ''}
+                     placeholder="Introduzca rut"/>
             </div>
             <div className="form-group">
               <label for="nationality">Stock</label>
               <input type="text" defaultValue={this.props.investor != null ? this.props.investor.stock : ''} ref={input => this._stock = input} className="form-control"
-                     placeholder="Introduzca telefono"/>
+                     placeholder="Introduzca stock"/>
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
           </form>

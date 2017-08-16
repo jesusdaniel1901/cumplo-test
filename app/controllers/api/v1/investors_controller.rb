@@ -60,4 +60,8 @@ class Api::V1::InvestorsController < Api::V1::ApiController
     render_error(:bad_request,'Bad request just for admins users') unless  admin_signed_in?
   end
 
+  def transfer_params
+    params.permit(:seller_id,:buyer_id,:stock)
+  end
+
 end
