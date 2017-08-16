@@ -107,6 +107,13 @@ export default class extends React.Component {
                      placeholder="Introduzca email"/>
             </div>
             <div className="form-group">
+              <label for="sel1">Seleccione el representante legal</label>
+              <select className="form-control"  ref={input => this._legal_representative = input}>
+                <option selected disabled>Seleccione un representante legal</option>
+                {legalRepresentatives}
+              </select>
+            </div>
+            <div className="form-group">
               <label for="investorName">Nombre</label>
               <input type="text" defaultValue={this.props.investor != null ? this.props.investor.name : ''} ref={input => this._name = input} className="form-control"
                      placeholder="Introduzca name"/>
