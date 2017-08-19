@@ -17,5 +17,19 @@ resource 'Investors' do
 
       expect(response_status).to eq(200)
     end
+    example 'Delete investors with an invalid ID',document: false do
+
+      legal_representative = FactoryGirl.create(:legal_representative)
+      investor = FactoryGirl.create(:investor,legal_representative: legal_representative)
+
+      do_request({
+        id: 'bla'
+      })
+
+      expect(response_status).to eq(400)
+      expect(response_body).to include_json({
+        errors: ["Investor no encontrado"]
+      })
+    end
   end
 end

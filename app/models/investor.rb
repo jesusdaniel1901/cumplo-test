@@ -2,8 +2,11 @@ class Investor < ApplicationRecord
 
   belongs_to :legal_representative
 
-  def sale_action(buyer,stock)
+  def sale_action( buyer_id,stock)
     Transfer.transaction do
+      buyer = Investor.find_by(id: buyer_id)
+
+      return false unless buyer_id.present?
 
       buyer.stock += stock
       self.stock -= stock
