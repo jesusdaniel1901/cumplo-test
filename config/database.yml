@@ -13,5 +13,3 @@ development:
 test:
   <<: *default
   database: cumplo_test
-
-
