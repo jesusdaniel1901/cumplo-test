@@ -35,14 +35,11 @@ export default class extends React.Component {
       type: 'json',
       url: '/api/v1/investors',
       success: (data, textStatus, request) => {
-        this.saveTokens(request);
+        this._saveTokens(request);
         this.setState({ investors: data })
       },
       error: (data) => {
-        if(data.responseJSON.errors[0] == 'Bad request just for admins users') {
-          window.location = 'admin/login';
-          alert('Bad request just for admins users');
-        }
+        this._showError(data);
       }
     });
   }
@@ -82,13 +79,10 @@ export default class extends React.Component {
           investors: this.state.investors.concat([newInvestor])
         });
         window.location = '/'
-        this.saveTokens(request)
+        this._saveTokens(request)
       },
       error: (data) => {
-      if(data.responseJSON.errors[0] == 'Bad request just for admins users') {
-        window.location = 'admin/login';
-        alert('Bad request just for admins users');
-      }
+      this._showError(data);
     }
     });
 
@@ -123,25 +117,21 @@ export default class extends React.Component {
         const investorIndex = investors.indexOf(investor);
         investors.splice(investorIndex,1);
         this.setState({ investors });
-        this.saveTokens(request);
+        this._saveTokens(request);
         window.location = '/';
       },
       error: (data) => {
-        if(data.responseJSON.errors[0] == 'Bad request just for admins users') {
-          window.location = 'admin/login';
-          alert('Bad request just for admins users');
-        }
+        this._showError(data);
       }
     });
 
   }
 
   _editInvestor(investor){
-    // this.setState({ investorToEdit: investor });
     window.location = `/investors/${investor.id}/edit`
   }
 
-  saveTokens(request){
+  _saveTokens(request){
     console.log(request.getResponseHeader('access-token'));
     if(request.getResponseHeader('access-token') != null) {
       console.log('entre aqui');
@@ -153,6 +143,20 @@ export default class extends React.Component {
     }
   }
 
+  _showError(data){
+    if(data.responseJSON.errors[0] == 'Bad request just for admins users') {
+      window.location = 'admin/login';
+      alert('Bad request just for admins users');
+    }
+    else{
+      var errorString = "";
+      data.responseJSON.errors.forEach(function (value,index,array) {
+        console.log('value ' + value+ ' '+ index)
+        errorString = errorString + value + ' ';
+      });
+      alert(errorString);
+    }
+  }
 
   render() {
     const tableBody = this._getTableBody();

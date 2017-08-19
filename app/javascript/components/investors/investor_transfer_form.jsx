@@ -14,6 +14,7 @@ export default class extends React.Component {
       selectBuyerErrorContent: '',
       selectSellerErrorContent: '',
       displaySellerError: 'none',
+      submitDisable: true
     };
     this._handleAmountChange = this._handleAmountChange.bind(this);
     this._handleBuyerChange = this._handleBuyerChange.bind(this);
@@ -53,10 +54,7 @@ export default class extends React.Component {
         this.setState({ investors: data })
       },
       error: (data) => {
-        if(data.responseJSON.errors[0] == 'Bad request just for admins users') {
-          window.location = '/admin/login';
-          alert('Bad request just for admins users');
-        }
+        this._showError(data);
       }
     });
   }
@@ -82,10 +80,7 @@ export default class extends React.Component {
         window.location = '/'
       },
       error: (data) =>{
-        if(data.responseJSON.errors[0] == 'Bad request just for admins users') {
-          window.location = 'admin/login';
-          alert('Bad request just for admins users');
-        }
+        this._showError(data);
       }
     });
   }
@@ -98,23 +93,38 @@ export default class extends React.Component {
     });
   }
 
+  _showError(data){
+    if(data.responseJSON.errors[0] == 'Bad request just for admins users') {
+      window.location = 'admin/login';
+      alert('Bad request just for admins users');
+    }
+    else{
+      var errorString = "";
+      data.responseJSON.errors.forEach(function (value,index,array) {
+        console.log('value ' + value+ ' '+ index)
+        errorString = errorString + value + ' ';
+      });
+      alert(errorString);
+    }
+  }
+
   _handleAmountChange(event){
     const re = /^[0-9\b]+$/;
     if (event.target.value == '' || re.test(event.target.value)) {
 
-      this.setState({amount: event.target.value,displayError: 'none'})
+      this.setState({amount: event.target.value,displayError: 'none',submitDisable: false})
       const investors = [...this.state.investors];
       const seller = investors.filter( investor => investor.id.toString() === this._seller.value.toString());
 
       if(parseFloat(event.target.value) > parseFloat(seller[0].stock)){
-        this.setState({errorContent: 'El monto es superior al que esta en stocks',displayError: 'block'});
+        this.setState({errorContent: 'El monto es superior al que esta en stocks',displayError: 'block',submitDisable: true});
       }
       else {
-        this.setState({errorContent: '',displayError: 'none'});
+        this.setState({errorContent: '',displayError: 'none',submitDisable: false});
       }
     }
     else{
-      this.setState({errorContent: 'Debe introducir solo numeros',displayError: 'block'});
+      this.setState({errorContent: 'Debe introducir solo numeros',displayError: 'block',submitDisable: true});
     }
   }
 
@@ -167,7 +177,7 @@ export default class extends React.Component {
                      placeholder="Introduza el monto a vender" onChange={this._handleAmountChange}/>
               <span style={{display: this.state.displayError, color: 'red'}}>{this.state.errorContent}</span>
             </div>
-            <button type="submit" className="btn btn-primary">Transferir</button>
+            <button type="submit" disabled={this.state.submitDisable} className="btn btn-primary">Transferir</button>
           </form>
         </div>
     )
