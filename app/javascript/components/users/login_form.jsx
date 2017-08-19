@@ -47,15 +47,15 @@ export default class extends React.Component {
             <input type='hidden' name='authenticity_token' value={this.props.authenticity_token} />
             <div className="form-group">
               <label for="investorEmail">Email address</label>
-              <input type="email"  className="form-control" ref={input => this._email = input} key="investorEmail"
-                     placeholder="Enter email"/>
+              <input type="email"  className="form-control" ref={input => this._email = input}
+                     placeholder="Introduzca su email email"/>
             </div>
             <div className="form-group">
               <label for="investorName">Password</label>
               <input type="password"  ref={input => this._password = input} className="form-control"
-                     placeholder="Enter password"/>
+                     placeholder="Introduzca su clave"/>
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="submit" className="btn btn-primary">Enviar</button>
           </form>
         </div>
     )
