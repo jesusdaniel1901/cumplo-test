@@ -1,6 +1,5 @@
 import React from 'react'
 import jQuery from 'Jquery'
-import InvestorForm from '../investors/investor_form'
 import InvestorRow from '../investors/investor_row'
 
 export default class extends React.Component {
