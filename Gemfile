@@ -37,6 +37,8 @@ gem 'active_model_serializers'
 gem 'devise_token_auth'
 gem 'omniauth'
 gem 'mysql2'
+gem 'factory_girl_rails'
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -45,8 +47,6 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.6'
-  gem 'factory_girl_rails'
-  gem 'faker'
   gem 'rspec_api_documentation'
   gem 'rspec-json_expectations'
   gem 'shoulda-matchers', '~> 3.0'
