@@ -1,0 +1,44 @@
+{
+  "resource": "Investors",
+  "resource_explanation": null,
+  "http_method": "POST",
+  "route": "/api/v1/investors/transfer-stock",
+  "description": "Make a transfer bewtween investors",
+  "explanation": "This method makes a transfer between investors",
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/v1/investors/transfer-stock",
+      "request_body": "{\"seller_id\":27,\"buyer_id\":28,\"stock\":72}",
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Token-Type": "Bearer",
+        "Uid": "rozella_ebert@jenkinsritchie.biz",
+        "Client": "kPIfPFeRtDIwocVDBSt4ng",
+        "Access-Token": "0JK0pIltXIZAq60OCvl8hw",
+        "Expiry": "1818778672"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"id\": 27,\n  \"name\": \"Shirley\",\n  \"email\": \"stuart.shields@hoppelangosh.co\",\n  \"nationality\": \"Slovenia\",\n  \"stock\": 0,\n  \"rut\": \"non\",\n  \"address\": \"Apt. 296 377 Trycia Loop, Hayleemouth, KY 71414\",\n  \"phone\": \"818.787.1175\"\n}",
+      "response_headers": {
+        "access-token": "0JK0pIltXIZAq60OCvl8hw",
+        "token-type": "Bearer",
+        "client": "kPIfPFeRtDIwocVDBSt4ng",
+        "expiry": "1818778672",
+        "uid": "rozella_ebert@jenkinsritchie.biz"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"https://localhost:3000/api/v1/investors/transfer-stock\" -d '{\"seller_id\":27,\"buyer_id\":28,\"stock\":72}' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Token-Type: Bearer\" \\\n\t-H \"Uid: rozella_ebert@jenkinsritchie.biz\" \\\n\t-H \"Client: kPIfPFeRtDIwocVDBSt4ng\" \\\n\t-H \"Access-Token: 0JK0pIltXIZAq60OCvl8hw\" \\\n\t-H \"Expiry: 1818778672\""
+    }
+  ]
+}

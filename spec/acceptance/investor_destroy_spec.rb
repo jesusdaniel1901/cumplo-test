@@ -26,7 +26,7 @@ resource 'Investors' do
         id: 'bla'
       })
 
-      expect(response_status).to eq(400)
+      expect(response_status).to eq(404)
       expect(response_body).to include_json({
         errors: ["Investor no encontrado"]
       })

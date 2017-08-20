@@ -18,3 +18,5 @@ This is the test for becoming a developer at Cumplo Chile the steps to run the p
 * The admin user by default is `admin@cumplo.cl` and the password is `foobar123`
 
 * The project is currently in heroku in `http://cumplo-server.herokuapp.com`
+
+* The docs for the api are in `/v1/docs`

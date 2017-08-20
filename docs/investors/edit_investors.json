@@ -1,0 +1,44 @@
+{
+  "resource": "Investors",
+  "resource_explanation": null,
+  "http_method": "PUT",
+  "route": "/api/v1/investors/:id",
+  "description": "Edit investors",
+  "explanation": "This method edits an investor",
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "PUT",
+      "request_path": "/api/v1/investors/20",
+      "request_body": "{\"email\":\"admin@cumplo.cl\"}",
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Token-Type": "Bearer",
+        "Uid": "madalyn@deckow.name",
+        "Client": "AXbC45aBaQH5LSaX6tQd7g",
+        "Access-Token": "ypmF9PxESi31QTy0MClO6g",
+        "Expiry": "1818778671"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"id\": 20,\n  \"name\": \"Alycia\",\n  \"email\": \"admin@cumplo.cl\",\n  \"nationality\": \"Ghana\",\n  \"stock\": 16,\n  \"rut\": \"officia\",\n  \"address\": \"Suite 303 7746 Casper Causeway, Grahamfort, TN 96800\",\n  \"phone\": \"569.259.9889\"\n}",
+      "response_headers": {
+        "access-token": "ypmF9PxESi31QTy0MClO6g",
+        "token-type": "Bearer",
+        "client": "AXbC45aBaQH5LSaX6tQd7g",
+        "expiry": "1818778671",
+        "uid": "madalyn@deckow.name"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"https://localhost:3000/api/v1/investors/20\" -d '{\"email\":\"admin@cumplo.cl\"}' -X PUT \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Token-Type: Bearer\" \\\n\t-H \"Uid: madalyn@deckow.name\" \\\n\t-H \"Client: AXbC45aBaQH5LSaX6tQd7g\" \\\n\t-H \"Access-Token: ypmF9PxESi31QTy0MClO6g\" \\\n\t-H \"Expiry: 1818778671\""
+    }
+  ]
+}

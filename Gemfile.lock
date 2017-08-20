@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/jejacks0n/apitome.git
+  revision: 808f3b1bdf3379838e12143037737bd49d8b4426
+  specs:
+    apitome (0.1.0)
+      kramdown
+      railties
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -124,6 +132,7 @@ GEM
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
     jsonapi-renderer (0.1.3)
+    kramdown (1.14.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -284,6 +293,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  apitome!
   byebug
   capistrano
   capistrano-bundler

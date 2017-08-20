@@ -1,0 +1,44 @@
+{
+  "resource": "Investors",
+  "resource_explanation": null,
+  "http_method": "DELETE",
+  "route": "/api/v1/investors/:id",
+  "description": "Delete investors",
+  "explanation": "This method deletes an investor",
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "DELETE",
+      "request_path": "/api/v1/investors/18",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Token-Type": "Bearer",
+        "Uid": "roman_effertz@starkosinski.biz",
+        "Client": "UAhtTHEagd3vMhdlnvP-2A",
+        "Access-Token": "XJYDSJ4d9WA7uBMsZw8Rig",
+        "Expiry": "1818778671"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n}",
+      "response_headers": {
+        "access-token": "XJYDSJ4d9WA7uBMsZw8Rig",
+        "token-type": "Bearer",
+        "client": "UAhtTHEagd3vMhdlnvP-2A",
+        "expiry": "1818778671",
+        "uid": "roman_effertz@starkosinski.biz"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"https://localhost:3000/api/v1/investors/18\" -d '' -X DELETE \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Token-Type: Bearer\" \\\n\t-H \"Uid: roman_effertz@starkosinski.biz\" \\\n\t-H \"Client: UAhtTHEagd3vMhdlnvP-2A\" \\\n\t-H \"Access-Token: XJYDSJ4d9WA7uBMsZw8Rig\" \\\n\t-H \"Expiry: 1818778671\""
+    }
+  ]
+}

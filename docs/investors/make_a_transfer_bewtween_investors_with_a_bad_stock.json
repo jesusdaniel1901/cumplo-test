@@ -1,0 +1,44 @@
+{
+  "resource": "Investors",
+  "resource_explanation": null,
+  "http_method": "POST",
+  "route": "/api/v1/investors/transfer-stock",
+  "description": "Make a transfer bewtween investors with a bad stock",
+  "explanation": null,
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/v1/investors/transfer-stock",
+      "request_body": "{\"seller_id\":31,\"buyer_id\":32,\"stock\":[10]}",
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Token-Type": "Bearer",
+        "Uid": "stella@legrosgutmann.org",
+        "Client": "kqoenMO97HwaYmBUytqnnQ",
+        "Access-Token": "1asAjSEmq943QsgM-iXiQA",
+        "Expiry": "1818778672"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 400,
+      "response_status_text": "Bad Request",
+      "response_body": "{\n  \"errors\": [\n    \"Parametro stock invalido\"\n  ]\n}",
+      "response_headers": {
+        "access-token": "1asAjSEmq943QsgM-iXiQA",
+        "token-type": "Bearer",
+        "client": "kqoenMO97HwaYmBUytqnnQ",
+        "expiry": "1818778672",
+        "uid": "stella@legrosgutmann.org"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"https://localhost:3000/api/v1/investors/transfer-stock\" -d '{\"seller_id\":31,\"buyer_id\":32,\"stock\":[10]}' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Token-Type: Bearer\" \\\n\t-H \"Uid: stella@legrosgutmann.org\" \\\n\t-H \"Client: kqoenMO97HwaYmBUytqnnQ\" \\\n\t-H \"Access-Token: 1asAjSEmq943QsgM-iXiQA\" \\\n\t-H \"Expiry: 1818778672\""
+    }
+  ]
+}

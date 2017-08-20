@@ -1,0 +1,44 @@
+{
+  "resource": "Investors",
+  "resource_explanation": null,
+  "http_method": "POST",
+  "route": "/api/v1/investors",
+  "description": "Create investors",
+  "explanation": "This method creates an investor",
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/v1/investors",
+      "request_body": "{\"name\":\"Gideon\",\"email\":\"jalyn@emard.name\",\"stock\":15,\"address\":\"Suite 725 7928 Blanda Ranch, Port Lexibury, TN 18811-3866\",\"phone\":\"(512) 894-7475\",\"nationality\":\"Suriname\",\"rut\":\"tempore\",\"legal_representative_id\":10}",
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Token-Type": "Bearer",
+        "Uid": "maynard_murazik@kuphalgraham.name",
+        "Client": "m9bSxapYKE8MkaAgg6voAA",
+        "Access-Token": "cAGPuQj8Xe06SfHJ4QmJTg",
+        "Expiry": "1818778671"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\n  \"id\": 17,\n  \"name\": \"Gideon\",\n  \"email\": \"jalyn@emard.name\",\n  \"nationality\": \"Suriname\",\n  \"stock\": 15,\n  \"rut\": \"tempore\",\n  \"address\": \"Suite 725 7928 Blanda Ranch, Port Lexibury, TN 18811-3866\",\n  \"phone\": \"(512) 894-7475\"\n}",
+      "response_headers": {
+        "access-token": "cAGPuQj8Xe06SfHJ4QmJTg",
+        "token-type": "Bearer",
+        "client": "m9bSxapYKE8MkaAgg6voAA",
+        "expiry": "1818778671",
+        "uid": "maynard_murazik@kuphalgraham.name"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl \"https://localhost:3000/api/v1/investors\" -d '{\"name\":\"Gideon\",\"email\":\"jalyn@emard.name\",\"stock\":15,\"address\":\"Suite 725 7928 Blanda Ranch, Port Lexibury, TN 18811-3866\",\"phone\":\"(512) 894-7475\",\"nationality\":\"Suriname\",\"rut\":\"tempore\",\"legal_representative_id\":10}' -X POST \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Token-Type: Bearer\" \\\n\t-H \"Uid: maynard_murazik@kuphalgraham.name\" \\\n\t-H \"Client: m9bSxapYKE8MkaAgg6voAA\" \\\n\t-H \"Access-Token: cAGPuQj8Xe06SfHJ4QmJTg\" \\\n\t-H \"Expiry: 1818778671\""
+    }
+  ]
+}

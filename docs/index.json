@@ -1,0 +1,52 @@
+{
+  "resources": [
+    {
+      "name": "Investors",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Create investors",
+          "link": "investors/create_investors.json",
+          "groups": "all",
+          "route": "/api/v1/investors",
+          "method": "post"
+        },
+        {
+          "description": "Delete investors",
+          "link": "investors/delete_investors.json",
+          "groups": "all",
+          "route": "/api/v1/investors/:id",
+          "method": "delete"
+        },
+        {
+          "description": "Edit investors",
+          "link": "investors/edit_investors.json",
+          "groups": "all",
+          "route": "/api/v1/investors/:id",
+          "method": "put"
+        },
+        {
+          "description": "Get investors",
+          "link": "investors/get_investors.json",
+          "groups": "all",
+          "route": "/api/v1/investors",
+          "method": "get"
+        },
+        {
+          "description": "Make a transfer bewtween investors",
+          "link": "investors/make_a_transfer_bewtween_investors.json",
+          "groups": "all",
+          "route": "/api/v1/investors/transfer-stock",
+          "method": "post"
+        },
+        {
+          "description": "Make a transfer bewtween investors with a bad stock",
+          "link": "investors/make_a_transfer_bewtween_investors_with_a_bad_stock.json",
+          "groups": "all",
+          "route": "/api/v1/investors/transfer-stock",
+          "method": "post"
+        }
+      ]
+    }
+  ]
+}

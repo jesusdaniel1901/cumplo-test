@@ -1,0 +1,44 @@
+{
+  "resource": "Investors",
+  "resource_explanation": null,
+  "http_method": "GET",
+  "route": "/api/v1/investors",
+  "description": "Get investors",
+  "explanation": "This returns all the investors in the system",
+  "parameters": [
+
+  ],
+  "response_fields": [
+
+  ],
+  "requests": [
+    {
+      "request_method": "GET",
+      "request_path": "/api/v1/investors",
+      "request_body": null,
+      "request_headers": {
+        "Content-Type": "application/json",
+        "Token-Type": "Bearer",
+        "Uid": "kelton.dubuque@harber.io",
+        "Client": "SUiiN4d_YntujjgoKHRAMA",
+        "Access-Token": "q9oR-xZ5WtBkErQ3bcok5w",
+        "Expiry": "1818778671"
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/json",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "[\n  {\n    \"id\": 22,\n    \"name\": \"Denis\",\n    \"email\": \"frederique@lindgren.biz\",\n    \"nationality\": \"Cyprus\",\n    \"stock\": 43,\n    \"rut\": \"quaerat\",\n    \"address\": \"770 Ziemann Branch, Port Haroldton, TN 15796\",\n    \"phone\": \"(911) 037-4809\",\n    \"legal_representative\": {\n      \"id\": 15,\n      \"full_name\": \"Miguel Labadie\"\n    }\n  },\n  {\n    \"id\": 23,\n    \"name\": \"Era\",\n    \"email\": \"dina.heaney@boyle.org\",\n    \"nationality\": \"Turkmenistan\",\n    \"stock\": 93,\n    \"rut\": \"est\",\n    \"address\": \"Apt. 722 72714 Christiansen Gateway, East Geraldine, FL 57198\",\n    \"phone\": \"255-065-8027\",\n    \"legal_representative\": {\n      \"id\": 15,\n      \"full_name\": \"Miguel Labadie\"\n    }\n  },\n  {\n    \"id\": 24,\n    \"name\": \"Rowan\",\n    \"email\": \"liam@bednartreutel.io\",\n    \"nationality\": \"Palau\",\n    \"stock\": 90,\n    \"rut\": \"corrupti\",\n    \"address\": \"Suite 791 92021 Angelica Glen, Thielfort, MN 71103-0589\",\n    \"phone\": \"(937) 637-8567\",\n    \"legal_representative\": {\n      \"id\": 15,\n      \"full_name\": \"Miguel Labadie\"\n    }\n  },\n  {\n    \"id\": 25,\n    \"name\": \"Jacynthe\",\n    \"email\": \"everardo@hanemuller.info\",\n    \"nationality\": \"Venezuela\",\n    \"stock\": 32,\n    \"rut\": \"doloribus\",\n    \"address\": \"26269 Kohler Unions, East Margaret, NH 72183\",\n    \"phone\": \"(367) 234-4632\",\n    \"legal_representative\": {\n      \"id\": 15,\n      \"full_name\": \"Miguel Labadie\"\n    }\n  },\n  {\n    \"id\": 26,\n    \"name\": \"Talia\",\n    \"email\": \"garett.mcdermott@waters.org\",\n    \"nationality\": \"Christmas Island\",\n    \"stock\": 90,\n    \"rut\": \"voluptatem\",\n    \"address\": \"672 Deondre River, Barrettmouth, IA 14062\",\n    \"phone\": \"1-877-365-0516\",\n    \"legal_representative\": {\n      \"id\": 15,\n      \"full_name\": \"Miguel Labadie\"\n    }\n  }\n]",
+      "response_headers": {
+        "access-token": "q9oR-xZ5WtBkErQ3bcok5w",
+        "token-type": "Bearer",
+        "client": "SUiiN4d_YntujjgoKHRAMA",
+        "expiry": "1818778671",
+        "uid": "kelton.dubuque@harber.io"
+      },
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": "curl -g \"https://localhost:3000/api/v1/investors\" -X GET \\\n\t-H \"Content-Type: application/json\" \\\n\t-H \"Token-Type: Bearer\" \\\n\t-H \"Uid: kelton.dubuque@harber.io\" \\\n\t-H \"Client: SUiiN4d_YntujjgoKHRAMA\" \\\n\t-H \"Access-Token: q9oR-xZ5WtBkErQ3bcok5w\" \\\n\t-H \"Expiry: 1818778671\""
+    }
+  ]
+}

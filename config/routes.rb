@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
 
   mount_devise_token_auth_for 'Admin', at: 'auth'
+  mount Apitome::Engine, at: '/v1/docs'
 
   namespace :api do
     namespace :v1 do
