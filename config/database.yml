@@ -14,13 +14,6 @@ test:
   <<: *default
   database: cumplo_test
 
-production:
-  adapter: mysql2
-  database: cumplo_production
-  pool: 5
-  username: root
-  password:
-  port: 3306
 
 
 
