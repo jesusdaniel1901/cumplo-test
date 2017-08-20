@@ -11,4 +11,4 @@
   legal_representative.investors << FactoryGirl.create(:investor,legal_representative: legal_representative)
 }
 
-admin = Admin.create!(email: 'admin@cumplo.cl',password: 'foobar123')
+admin = Admin.create!(email: 'admin@cumplo.cl',password: 'foobar123',confirmed_at: DateTime.now)
