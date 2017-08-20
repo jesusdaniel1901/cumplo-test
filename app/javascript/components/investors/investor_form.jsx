@@ -1,5 +1,5 @@
 import React from 'react'
-import jQuery from 'Jquery'
+import jQuery from 'jquery'
 
 export default class extends React.Component {
 

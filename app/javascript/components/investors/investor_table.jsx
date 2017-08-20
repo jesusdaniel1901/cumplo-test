@@ -1,5 +1,5 @@
 import React from 'react'
-import jQuery from 'Jquery'
+import jQuery from 'jquery'
 import InvestorRow from '../investors/investor_row'
 
 export default class extends React.Component {
