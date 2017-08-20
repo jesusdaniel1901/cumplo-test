@@ -6,6 +6,7 @@ export default class extends React.Component {
   constructor(props){
     super(props)
     this._handleSubmit = this._handleSubmit.bind(this);
+    this._showError = this._showError.bind(this);
   }
 
   _handleSubmit(event){
@@ -30,9 +31,24 @@ export default class extends React.Component {
         window.location = '/'
       },
       error: (data) => {
-        console.log(data)
+        this._showError(data);
       }
     });
+  }
+
+  _showError(data){
+    if(data.responseJSON.errors[0] == 'Bad request just for admins users') {
+      window.location = 'admin/login';
+      alert('Bad request just for admins users');
+    }
+    else{
+      var errorString = "";
+      data.responseJSON.errors.forEach(function (value,index,array) {
+        console.log('value ' + value+ ' '+ index)
+        errorString = errorString + value + ' ';
+      });
+      alert(errorString);
+    }
   }
 
   render(){
