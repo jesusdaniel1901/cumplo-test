@@ -13,6 +13,7 @@ export default class extends React.Component {
     };
     this._addInvestor = this._addInvestor.bind(this);
     this._deleteInvestor = this._deleteInvestor.bind(this);
+    this._logout = this._logout.bind(this);
   }
 
   componentWillMount() {
@@ -157,12 +158,36 @@ export default class extends React.Component {
     }
   }
 
+  _logout(event){
+    event.preventDefault();
+    jQuery.ajax({
+      method: 'DELETE',
+      headers: {
+        "Content-Type": " application/json",
+        "Accept": "application/json",
+        "access-token": localStorage.getItem("access-token"),
+        "client": localStorage.getItem("client"),
+        "expiry": localStorage.getItem("expiry"),
+        "token-type": localStorage.getItem("token-type"),
+        "uid": localStorage.getItem("uid")
+      },
+      type: 'json',
+      url: `/auth/sign_out`,
+      success: (data,textStatus, request) => {
+        window.location = '/admin/login';
+      }
+    });
+
+  }
+
   render() {
     const tableBody = this._getTableBody();
     return (
         <div>
           <a href="investors/transfer" style={{marginTop: '2%', marginLeft: '2%'}} className="btn btn-primary pull-left">Transferir stock</a>
+          <a onClick={this._logout} style={{marginTop: '2%', marginRight: '2%'}} className="btn btn-primary pull-right">Logout</a>
           <a href="investors/new" style={{marginTop: '2%', marginRight: '2%'}} className="btn btn-primary pull-right">Crear nuevo inversionista</a>
+
           <table className="table">
             <thead>
             <tr>
