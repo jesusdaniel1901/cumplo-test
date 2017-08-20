@@ -9,6 +9,7 @@
 .idea/
 config/database.yml
 config/application.yml
+node_modules/*
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
