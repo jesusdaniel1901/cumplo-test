@@ -38,8 +38,5 @@
   },
   "devDependencies": {
     "webpack-dev-server": "^2.7.1"
-  },
-  "scripts": {
-    "webpack:deploy": "bundle exec rails webpacker:compile"
   }
 }
